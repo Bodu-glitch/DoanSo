@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div id="guessCard" class="screen">        
+        <div class="card">
+            <h1>Trò Chơi Đoán Số</h1>
+            <input id="inNumber" placeholder="Enter your number" type="number"><br>
+            <label id="lbResult"></label>
+            <label id="lbLife">Bạn có 5 mạng</label>
+        </div>
+    </div>
+
+    <div id="win" class="screen">
+        <div class="card">
+            <h1>Chúc Mừng!</h1>
+            <div><button id="btnReset" class="btnReset">Reset Game</button></div>
+        </div>
+    </div>
+
+    <div id="lose" class="screen">
+        <div class="card">
+            <h1>Bạn Đã Thua!</h1>
+            <div><button id="btnReset1" class="btnReset">Reset Game</button></div><br>
+            <label id="sodung"></label>
+
+        </div>
+    </div>
+
+    
+
+
+    <script>
+        const guessCard = document.getElementById("guessCard");
+        const loseCard = document.getElementById("lose");
+        const winCard = document.getElementById("win");
+        const lbLife = document.getElementById("lbLife");
+        const sodung = document.getElementById("sodung");
+        const btnReset = document.getElementById("btnReset");
+        const btnReset1 = document.getElementById("btnReset1");
+
+        loseCard.style.display = "none";
+        winCard.style.display = "none";
+
+
+        let inNumber = document.getElementById("inNumber");
+        let lbResult = document.getElementById("lbResult");
+        
+        
+
+        let so = Math.floor(Math.random() * 100) + 1;
+        let mang = 5;
+
+        inNumber.onkeypress = (key) => {
+            if (key.code == 'Enter') {
+                let num = parseInt(inNumber.value);
+                console.log("Con Số Chiến Thắng" + so);
+                inNumber.value = ""
+                if (num == so) {
+                    lbResult.innerText = "Bạn đã thắng";
+                    guessCard.style.display = "none";
+                    winCard.style.display = "flex";
+                } else if (num > so) {
+                    lbResult.innerText = "Số của bạn lớn hơn";
+                } else {
+                    lbResult.innerText = "Số của bạn bé hơn";
+                }
+                mang--;
+                lbLife.innerText = "Bạn còn " + mang + " mạng";
+            }
+            if (mang == 0) {
+                inNumber.value = "";
+                guessCard.style.display = "none";
+                loseCard.style.display = "flex";
+                sodung.innerText = "Con Số Chính Xác: " + so;
+            }
+
+        }
+
+        btnReset1.onclick = () => {
+            mang = 5;
+            console.log(mang);
+            loseCard.style.display = "none";
+            guessCard.style.display = "flex";
+            so = Math.floor(Math.random() * 100) + 1;
+            lbResult.innerText = "";
+            lbLife.innerText = "Bạn có 5 mạng"
+        }
+
+        btnReset.onclick = () => {
+            mang = 5;
+            console.log(mang);
+            winCard.style.display = "none";
+            guessCard.style.display = "flex";
+            so = Math.floor(Math.random() * 100) + 1;
+            lbResult.innerText = "";
+            lbLife.innerText = "Bạn có 5 mạng"
+        }
+
+    </script>
+</body>
+
+</html>
