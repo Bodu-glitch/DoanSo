@@ -16,12 +16,20 @@
 </head>
 
 <body>
-    <div id="guessCard" class="screen">        
+    <div id="guessCard" class="screen">
         <div class="card">
             <h1>Trò Chơi Đoán Số</h1>
             <input id="inNumber" placeholder="Enter your number" type="number"><br>
             <label id="lbResult"></label>
-            <label id="lbLife">Bạn có 5 mạng</label>
+            <br>
+            <div id="life">
+                <div id="botLayer">
+                    <div id="topLayer"></div>
+                </div>
+                <p id="lbLife">Bạn có 5 mạng</p>
+
+            </div>
+            <!-- <label id="lbLife">Bạn có 5 mạng</label> -->
         </div>
     </div>
 
@@ -41,7 +49,7 @@
         </div>
     </div>
 
-    
+
 
 
     <script>
@@ -59,14 +67,15 @@
 
         let inNumber = document.getElementById("inNumber");
         let lbResult = document.getElementById("lbResult");
-        
-        
+
+
 
         let so = Math.floor(Math.random() * 100) + 1;
         let mang = 5;
 
         inNumber.onkeypress = (key) => {
             if (key.code == 'Enter') {
+
                 let num = parseInt(inNumber.value);
                 console.log("Con Số Chiến Thắng" + so);
                 inNumber.value = ""
@@ -80,7 +89,14 @@
                     lbResult.innerText = "Số của bạn bé hơn";
                 }
                 mang--;
+
+                document.documentElement.style.setProperty(
+                    "--tube-percentage",
+                    (5 - (5 - mang)) * 20 + "%",
+                );
+
                 lbLife.innerText = "Bạn còn " + mang + " mạng";
+
             }
             if (mang == 0) {
                 inNumber.value = "";
@@ -99,6 +115,10 @@
             so = Math.floor(Math.random() * 100) + 1;
             lbResult.innerText = "";
             lbLife.innerText = "Bạn có 5 mạng"
+            document.documentElement.style.setProperty(
+                "--tube-percentage",
+                (5 - (5 - mang)) * 20 + "%",
+            );
         }
 
         btnReset.onclick = () => {
@@ -109,6 +129,10 @@
             so = Math.floor(Math.random() * 100) + 1;
             lbResult.innerText = "";
             lbLife.innerText = "Bạn có 5 mạng"
+            document.documentElement.style.setProperty(
+                "--tube-percentage",
+                (5 - (5 - mang)) * 20 + "%",
+            );
         }
 
     </script>
