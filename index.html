@@ -16,10 +16,10 @@
 </head>
 
 <body>
-    <div id="guessCard" class="screen">
-        <div class="card">
+    <div class="screen" style="background-image: url(./1.1.png);">
+        <div id="guessCard" class="card">
             <h1>Trò Chơi Đoán Số</h1>
-            <input id="inNumber" placeholder="Enter your number" type="number"><br>
+            <input id="inNumber" placeholder="Nhập vào số của bạn đoán" type="number"><br>
             <label id="lbResult"></label>
             <br>
             <div id="life">
@@ -31,26 +31,19 @@
             </div>
             <!-- <label id="lbLife">Bạn có 5 mạng</label> -->
         </div>
-    </div>
-
-    <div id="win" class="screen">
-        <div class="card">
+        <div id="win" class="card">
             <h1>Chúc Mừng!</h1>
-            <div><button id="btnReset" class="btnReset">Reset Game</button></div>
+            <div><button id="btnReset" class="btnReset">Game Mới</button></div>
         </div>
-    </div>
-
-    <div id="lose" class="screen">
-        <div class="card">
+        <div id="lose" class="card">
             <h1>Bạn Đã Thua!</h1>
-            <div><button id="btnReset1" class="btnReset">Reset Game</button></div><br>
+            <div><button id="btnReset1" class="btnReset">Game Mới</button></div><br>
             <label id="sodung"></label>
 
         </div>
     </div>
 
-
-
+   
 
     <script>
         const guessCard = document.getElementById("guessCard");
